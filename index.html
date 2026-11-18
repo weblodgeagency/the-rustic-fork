@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rustic Fork — Farm-to-Table Restaurant in Denver, CO</title>
+<meta name="description" content="The Rustic Fork is a farm-to-table restaurant in Denver, CO — seasonal Colorado dishes, a wood-fired kitchen, and warm, honest cooking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf6ef;--card:#ffffff;--ink:#2b2118;--muted:#7a6a58;--line:#e8ddcd;--accent:#b4552d;--accent-dark:#93401f;--green:#4a6b3a;--dark:#2b2118}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700}
+  .logo svg{width:40px;height:40px;flex-shrink:0}
+  .nav-links{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:999px;transition:.2s;border:2px solid var(--accent)}
+  .btn:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+  .btn-outline{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+  .btn-sm{padding:9px 20px;font-size:.9rem}
+  .hero{position:relative;border-radius:24px;overflow:hidden;margin:32px 0 56px;min-height:480px;display:flex;align-items:flex-end}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,6,.82),rgba(20,12,6,.15) 60%)}
+  .hero-content{position:relative;z-index:1;padding:48px;color:#fff;max-width:640px}
+  .hero-content .tag{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  .hero-content h1{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin-bottom:14px}
+  .hero-content p{font-size:1.05rem;opacity:.92;margin-bottom:24px}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-btns .btn-outline{color:#fff;border-color:#fff}
+  .hero-btns .btn-outline:hover{background:#fff;color:var(--ink)}
+  section{margin-bottom:64px}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 36px}
+  .section-head .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .section-head h2{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);line-height:1.2;margin-bottom:10px}
+  .section-head p{color:var(--muted)}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .about img{width:100%;border-radius:16px;object-fit:cover;height:340px}
+  .about h2{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin-bottom:14px}
+  .about p{color:var(--muted);margin-bottom:12px}
+  .about .facts{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
+  .about .fact b{display:block;font-family:'Fraunces',serif;font-size:1.5rem;color:var(--accent)}
+  .about .fact span{font-size:.88rem;color:var(--muted)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .menu-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .menu-card h3{font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+  .dish{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .dish:last-child{border-bottom:none}
+  .dish .name{font-weight:600;font-size:.95rem}
+  .dish .desc{font-size:.85rem;color:var(--muted)}
+  .dish .price{font-weight:700;color:var(--accent);white-space:nowrap}
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .review .stars{color:#e8a013;font-size:1.1rem;letter-spacing:2px;margin-bottom:10px}
+  .review p{font-size:.95rem;color:var(--muted);margin-bottom:14px}
+  .review .who{font-weight:700;font-size:.9rem}
+  .review .who span{display:block;font-weight:400;color:var(--muted);font-size:.85rem}
+  .visit{background:var(--dark);color:#f5efe4;border-radius:20px;padding:48px 32px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .visit h2{font-family:'Fraunces',serif;font-size:1.6rem;margin-bottom:14px}
+  .visit p{opacity:.85;margin-bottom:8px}
+  .visit a{color:#ffb38a;font-weight:600}
+  .visit .hours{width:100%;border-collapse:collapse}
+  .visit .hours td{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.95rem}
+  .visit .hours td:last-child{text-align:right}
+  .cta{text-align:center}
+  .cta .btn{font-size:1.05rem;padding:15px 36px}
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;text-align:center;font-size:.9rem;color:var(--muted)}
+  footer a{color:var(--ink);font-weight:600}
+  @media (max-width:860px){
+    .about,.visit{grid-template-columns:1fr}
+    .menu-grid,.reviews{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+    .hero{min-height:380px}
+    .hero-content{padding:32px 24px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#b4552d"/><g stroke="#faf6ef" stroke-width="2.6" stroke-linecap="round" fill="none"><path d="M17 12v14a5 5 0 0 0 10 0V12"/><path d="M22 12v8"/><path d="M31 12c-2.5 2-3.8 4.6-3.8 8a4.2 4.2 0 0 0 8.4 0c0-3.4-1.3-6-3.8-8"/><path d="M22 31v7"/><path d="M31.4 24.5V38"/></g></svg>
+      The Rustic Fork
+    </a>
+    <nav class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-sm" href="tel:+13035550149">Call (303) 555-0149</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop" alt="Warm dining room at The Rustic Fork">
+    <div class="hero-content">
+      <span class="tag">Farm-to-table · Denver</span>
+      <h1>Honest food, cooked over fire.</h1>
+      <p>Seasonal Colorado dishes from farms we know by name — served in a warm, wood-fired dining room in Larimer Square.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#menu">View the menu</a>
+        <a class="btn btn-outline" href="tel:+13035550149">Book a table</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1600&auto=format&fit=crop" alt="Seasonal dishes at The Rustic Fork">
+    <div>
+      <h2>From Colorado farms to your fork.</h2>
+      <p>Every morning, our kitchen starts with whatever came in from fourteen Colorado farms — heirloom vegetables, pasture-raised meats, and bread baked in-house at dawn.</p>
+      <p>The menu changes with the seasons, but the promise never does: real ingredients, cooked simply, over Colorado oak fire.</p>
+      <div class="facts">
+        <div class="fact"><b>14</b><span>Local partner farms</span></div>
+        <div class="fact"><b>4.8 ★</b><span>620+ guest reviews</span></div>
+        <div class="fact"><b>2019</b><span>Serving Denver since</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-head">
+      <span class="eyebrow">The Menu</span>
+      <h2>Seasonal favorites</h2>
+      <p>A short menu, done well — it changes with what the farms bring in.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>To Start</h3>
+        <div class="dish"><div><div class="name">Roasted Beet Salad</div><div class="desc">Whipped goat cheese, candied walnuts, sherry vinaigrette</div></div><div class="price">$14</div></div>
+        <div class="dish"><div><div class="name">Wood-Fired Flatbread</div><div class="desc">Heirloom tomato, basil, smoked mozzarella</div></div><div class="price">$13</div></div>
+        <div class="dish"><div><div class="name">Green Chile Soup</div><div class="desc">Pueblo chiles, crema, house sourdough</div></div><div class="price">$11</div></div>
+      </div>
+      <div class="menu-card">
+        <h3>From the Fire</h3>
+        <div class="dish"><div><div class="name">Oak-Grilled Ribeye</div><div class="desc">Bone marrow butter, crispy potatoes, charred onion</div></div><div class="price">$38</div></div>
+        <div class="dish"><div><div class="name">Half Chicken al Mattone</div><div class="desc">Brick-pressed, sage jus, roasted roots</div></div><div class="price">$29</div></div>
+        <div class="dish"><div><div class="name">Rainbow Trout</div><div class="desc">Brown butter, capers, grilled lemon, herbs</div></div><div class="price">$31</div></div>
+      </div>
+      <div class="menu-card">
+        <h3>Something Sweet</h3>
+        <div class="dish"><div><div class="name">Skillet Peach Cobbler</div><div class="desc">Palisade peaches, vanilla bean ice cream</div></div><div class="price">$12</div></div>
+        <div class="dish"><div><div class="name">Chocolate Budino</div><div class="desc">Sea salt, olive oil, amaretti crumb</div></div><div class="price">$11</div></div>
+        <div class="dish"><div><div class="name">Honey Panna Cotta</div><div class="desc">Local honey, bee pollen, berries</div></div><div class="price">$10</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-head">
+      <span class="eyebrow">Guest Reviews</span>
+      <h2>Denver keeps coming back</h2>
+      <p>4.8 out of 5 from more than 620 guests.</p>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"The ribeye alone is worth the trip downtown. You can taste that everything came from somewhere real — this is our anniversary spot now."</p>
+        <div class="who">Megan R.<span>Denver · Google review</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Warm room, honest cooking, zero pretension. The flatbread and the peach cobbler are the best things I have eaten all year."</p>
+        <div class="who">Daniel K.<span>Lakewood · Google review</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Brought clients here twice and both times they asked for the name before dessert. The staff treats you like a regular from day one."</p>
+        <div class="who">Priya S.<span>Boulder · Google review</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div>
+      <h2>Come say hello</h2>
+      <p>1428 Larimer Street<br>Denver, CO 80202</p>
+      <p><a href="tel:+13035550149">(303) 555-0149</a></p>
+      <p>Walk-ins welcome. Parties of 6+ please call ahead.</p>
+    </div>
+    <div>
+      <table class="hours">
+        <tr><td>Monday – Thursday</td><td>11:30 AM – 9:30 PM</td></tr>
+        <tr><td>Friday – Saturday</td><td>11:30 AM – 10:30 PM</td></tr>
+        <tr><td>Sunday</td><td>10:00 AM – 9:00 PM</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a class="btn" href="tel:+13035550149">Book your table — (303) 555-0149</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 The Rustic Fork · Denver, CO</p>
+    <p>Website designed &amp; built by <a href="https://weblodge.agency" target="_blank" rel="noopener">Weblodge Agency</a></p>
+  </div>
+</footer>
+</body>
+</html>
